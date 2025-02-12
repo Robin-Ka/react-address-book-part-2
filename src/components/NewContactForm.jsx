@@ -23,21 +23,24 @@ function NewContactForm(){
         });
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()
         contactContext.setContacts([...contactContext.contacts, newContact])
         try {
-            fetch("https://boolean-uk-api-server.fly.dev/robin-ka/contact" , {
+            const response = await fetch("https://boolean-uk-api-server.fly.dev/robin-ka/contact" , {
                 method: "POST",
                 headers: { "Content-Type" : "application/json" },
                 body: JSON.stringify(newContact)
             })
+
+            const updatedContact = await response.json()
+            contactContext.setContacts([...contactContext.contacts, updatedContact])
             navigate("/");
         } catch (error) {
             console.log(error)
         }
         
-      }
+    }
 
     return (
 

@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    flex-direction: column; /* Stack header and content */
+    flex-direction: column;
 }
 
 .main-content {
@@ -31,4 +31,9 @@
     border-bottom: 1px solid #ccc;
     justify-content: space-between;
     align-items: center;
+}
+
+.contact p{
+    flex-grow: 1;
+    max-width: 80%;
 }
